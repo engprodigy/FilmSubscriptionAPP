@@ -25,6 +25,7 @@ Route::get('/films/film-slug-{name}', 'FilmController@getfilmbyslugname');
 //Route::get('/films/film-slug-name', 'FilmController@getfilmbyname');
 //Route::post('/films/film-slug-name', 'FilmController@getfilmbyname');
 Route::get('/films/comments/{film_id}', 'FilmController@comments');
+Route::post('/films/comments/{film_id}', 'FilmController@postcomments');
 //Route::get('/film', 'FormController@index');
 //Route::post('/films/create', 'FilmController@submitform');
 Route::get('/films/create', 
