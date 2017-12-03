@@ -18,18 +18,6 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Dropping Comments for Film "{{$film->name}}"</h3>
                     </div>
-      
-                  
-
-                    
-                 <ul class="list-group">
-                    <li class="list-group-item"><strong></strong> </li>
-                    <li class="list-group-item"><strong></strong> </li>
-                    
-                   <!-- <li class="list-group-item"><a href="{{ url('/films/comments') }}/" class="btn btn-danger">Submit Comment</a>  
-                        </li>-->
-            
-                    </ul>
                 </div>
               {!! Form::open( array('action' => array('FilmController@postcomments', $film->film_id), 'class' => 'form')) !!}
 
@@ -45,6 +33,19 @@
                        array('class'=>'btn btn-primary')) !!}
                       </div>
                     {!! Form::close() !!} 
+
+                    <div class="panel panel-primary text-center">
+                       <p>&nbsp; </p>
+                      <h2 class="panel-title"><strong>All Comments</strong> </h2>
+                      <p>&nbsp; </p>
+                      <ul class="list-group">
+                        @foreach($comments as $comment)
+                         <li class="list-group-item" style=" text-align: left; ">{{$comment['comment']}} by {{$comment['name']}} </li>
+                         <!--<li class="list-group-item">{{$comment['name']}} </li>-->
+                    
+                         @endforeach
+                        </ul>
+                    </div>
 
             </div>
       

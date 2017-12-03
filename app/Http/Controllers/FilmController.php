@@ -79,13 +79,14 @@ class FilmController extends Controller
        {
         
         $film = Film::find($film_id);
-       // $film = Film::where('film_id', '=' , $film_id)->get();
-       
+        $comments = Comment::where('post_id', '=' , $film_id)->orderBy('id','DESC')->get();
+        //var_dump($comments);
+        //var_dump($comments[0]['name']);
         // $film = DB::select(DB::raw("SELECT * FROM films where film_id = '$film_id'")) ; 
-       // echo $film;
+        // echo $film;
         
         //var_dump($film);
-        return view('film.film_comments', compact('film'));
+        return view('film.film_comments', compact('film','comments'));
         //return view('film.film_viewbyslugname')->with('film', $film);
 
 
@@ -95,7 +96,8 @@ class FilmController extends Controller
 
        {
           //$film_id =5;
-         var_dump($film_id);
+         //var_dump($film_id);
+        if(Auth::check()){
            $rules = array(
              
               'comment' => 'required',
@@ -118,8 +120,10 @@ class FilmController extends Controller
                  return Redirect::to('/films/comments/'.$film_id);
                // $film = Film::find($film_id);
                // return view('film.film_comments', compact('film'));
-
-             }
+                       }
+             }else{
+          return redirect('/login');
+           }
         
             //$film = Film::find($film_id);
              //  return view('film.film_comments', compact('film'));
