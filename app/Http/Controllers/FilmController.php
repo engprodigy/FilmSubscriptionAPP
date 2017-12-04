@@ -16,11 +16,25 @@ use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Support\Facades\Redirect;
 use Auth;
+use Response;
 
 class FilmController extends Controller
 {
     //
        public function index ()
+
+       {
+
+        $films=Film::all();
+
+        return Response::json(array(
+            'error' => false,
+            'films' => $films,
+            'status_code' => 200
+        ));
+
+      }
+      public function listallfilm ()
 
        {
         

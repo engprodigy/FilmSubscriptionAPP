@@ -21,6 +21,7 @@
 //});
 
 Route::get('/films', 'FilmController@index')->name('film');
+Route::get('/films/listtocomment', 'FilmController@listallfilm')->name('listfilm');
 Route::get('/films/film-slug-{name}', 'FilmController@getfilmbyslugname');
 //Route::get('/films/film-slug-name', 'FilmController@getfilmbyname');
 //Route::post('/films/film-slug-name', 'FilmController@getfilmbyname');
